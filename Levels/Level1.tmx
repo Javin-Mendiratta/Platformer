@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="132" height="70" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="61">
+ <tileset firstgid="1" source="../Assets/TileSets/World1/Enemies.tsx"/>
+ <tileset firstgid="4" source="../Assets/TileSets/Coins.tsx"/>
+ <tileset firstgid="19" source="../Assets/TileSets/GrassLand/Terrain_GrassLand.tsx"/>
+ <layer id="2" name="Background" width="132" height="70">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20IX6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIDXAJBgAAE=
+  </data>
+ </layer>
+ <layer id="5" name="Props" width="132" height="70">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20IX6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIDXAJBgAAE=
+  </data>
+ </layer>
+ <layer id="1" name="Ground" width="132" height="70">
+  <data encoding="base64" compression="zlib">
+   eJzt3E1OwmAYhdF3N+pKjHEgiTNh4Ny4A907dWC4MRCr/eFre05yx0B4QvJRyr6q9mZmZmZmZmYT7NDt0za3lzrfw3uxRW+lB070QNIDSQ8kPZD0QNIDSQ8kPZD0QNID6aPOX8fQw7b9/JzQw7bpgaQHkh5IeliPm263A/dQeliLS98hDJkelksPJD2Q9EDSA0kPJD2Qvq9Ruj+Lofz+oT1P3Xa/7Hmix9YDSQ8kPZD0QNIDSQ8kPYyvz3lxyjPjEHog6YGkB5IeSHog6YGkh5MlnxPHogdSyz2McZ/R1+7mfuIL1nIPY/0OsIXXshR6IOmBpAfStXu4r/73nLfeQ9/zastn1mv3MMW9Iz4f/k8PJD2Q9EDSA0kPpEvvx2ONc+3gr/9jNsUOVa9zvJY1bI73w8zMzMzMtrsjOCXkxA==
+  </data>
+ </layer>
+ <layer id="7" name="Goal" width="132" height="70">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAIA7Cd+FeMjCXQKmgCAAAAAAAAAAAAAAC/TTsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcsJitAAk=
+  </data>
+ </layer>
+ <objectgroup id="4" name="Coins">
+  <object id="40" gid="4" x="678.667" y="772" width="16" height="16">
+   <properties>
+    <property name="point_val" type="int" value="10"/>
+    <property name="type" value="gold"/>
+   </properties>
+  </object>
+  <object id="42" gid="4" x="1069.33" y="769.333" width="16" height="16">
+   <properties>
+    <property name="point_val" type="int" value="10"/>
+    <property name="type" value="gold"/>
+   </properties>
+  </object>
+  <object id="43" gid="4" x="1360" y="640" width="16" height="16">
+   <properties>
+    <property name="point_val" type="int" value="10"/>
+    <property name="type" value="gold"/>
+   </properties>
+  </object>
+  <object id="44" gid="4" x="1600" y="544" width="16" height="16">
+   <properties>
+    <property name="point_val" type="int" value="10"/>
+    <property name="type" value="gold"/>
+   </properties>
+  </object>
+  <object id="48" gid="14" x="190.667" y="980" width="16" height="16">
+   <properties>
+    <property name="type" value="silver"/>
+   </properties>
+  </object>
+  <object id="50" gid="14" x="306.667" y="925.333" width="16" height="16">
+   <properties>
+    <property name="type" value="silver"/>
+   </properties>
+  </object>
+  <object id="51" gid="14" x="482.667" y="860" width="16" height="16">
+   <properties>
+    <property name="type" value="silver"/>
+   </properties>
+  </object>
+  <object id="52" gid="14" x="1334.67" y="872" width="16" height="16">
+   <properties>
+    <property name="type" value="silver"/>
+   </properties>
+  </object>
+  <object id="53" gid="9" x="1846.67" y="373.333" width="16" height="16">
+   <properties>
+    <property name="type" value="red"/>
+   </properties>
+  </object>
+  <object id="54" gid="9" x="1913.33" y="372" width="16" height="16">
+   <properties>
+    <property name="type" value="red"/>
+   </properties>
+  </object>
+  <object id="55" gid="9" x="1973.33" y="372" width="16" height="16">
+   <properties>
+    <property name="type" value="red"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="Enemies">
+  <object id="21" gid="3" x="669.333" y="813.667" width="32" height="32">
+   <properties>
+    <property name="boundary_left" type="int" value="533"/>
+    <property name="boundary_right" type="int" value="850"/>
+    <property name="change_x" type="int" value="2"/>
+    <property name="health" type="int" value="50"/>
+    <property name="type" value="Wisp"/>
+   </properties>
+  </object>
+  <object id="23" gid="3" x="1353" y="671" width="32" height="32">
+   <properties>
+    <property name="boundary_left" type="int" value="1270"/>
+    <property name="boundary_right" type="int" value="1465"/>
+    <property name="change_x" type="int" value="2"/>
+    <property name="health" type="int" value="50"/>
+    <property name="type" value="Wisp"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
