@@ -7,6 +7,7 @@
 import arcade
 import pathlib
 import math
+import shelve
 
 from Entities.Player import Player
 from Entities.Enemies.Wisp import Wisp
@@ -39,13 +40,18 @@ def load_texture_pair(fileName):
 
 class PreLevel(arcade.View):
        
-    def __init__(self, world = 1, level = 1):
+    def __init__(self):
         super().__init__()
 
-        self.level = level
-        self.world = world
+        save_data = shelve.open('Save_Data/Save_Data')
+
+        self.level = save_data['current_level']
+        self.world = save_data['current_world']
         self.background = arcade.load_texture(PATH_TO_ASSETS / "Images" / "PreLevel" / f"Level{self.level}.png")
-        self.platformer = Platformer(world = world, level = level)
+
+        save_data.close()
+
+        self.platformer = Platformer(world = self.world, level = self.level)
 
     def on_show_view(self):
         arcade.play_sound(sounds.LEVEL_START_SOUND)
@@ -79,6 +85,8 @@ class Platformer(arcade.View):
     def __init__(self, world = 1, level = 1):
         # Call the parent class and set up the window
         super().__init__()
+
+        self.save_data = shelve.open('Save_Data/Save_Data')
 
         self.left_pressed = False
         self.right_pressed = False
@@ -571,16 +579,27 @@ class Platformer(arcade.View):
                 if self.scene[const.LAYER_NAME_GOAL] in collision.sprite_lists:
                     if not self.level_ended:
                         arcade.play_sound(sounds.GOAL_SOUND)
-                        self.level += 1
                         self.level_ended = True
                         self.bgm.stop(self.player)
-                        if self.level <= const.MAX_LEVEL:
+                        if self.level + 1 <= const.MAX_LEVEL:
                             self.reset_score = False
-                            self.window.show_view(PreLevel(level = self.level))
+                            self.save_data['current_level'] = self.level + 1
+                            self.save_data.close()
+                            self.window.show_view(PreLevel())
                         else:
-                            new_menu = MainMenu(PreLevel())
-                            win_screen = WinScreen(new_menu)
-                            self.window.show_view(win_screen)
+                            if self.world + 1 <= const.MAX_WORLD:
+                                self.reset_score = False
+                                self.save_data['current_world'] = self.world + 1
+                                self.save_data['current_level'] = 1
+                                self.save_data.close()
+                                self.window.show_view(PreLevel())
+                            else: 
+                                self.save_data['current_world'] = 1
+                                self.save_data['current_level'] = 1
+                                self.save_data.close()
+                                new_menu = MainMenu(PreLevel())
+                                win_screen = WinScreen(new_menu)
+                                self.window.show_view(win_screen)
                 elif self.scene[const.LAYER_NAME_ENEMIES] in collision.sprite_lists:
                     if not self.player_sprite.isInvincible:
                         if collision.type == "Wisp":

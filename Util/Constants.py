@@ -61,3 +61,4 @@ class Constants:
         #Invincibility Frames
         self.INVINCIBLE_TIME = 15
         self.MAX_LEVEL = 2
+        self.MAX_WORLD = 1
